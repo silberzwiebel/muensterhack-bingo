@@ -4,7 +4,7 @@
 
 Since it's a HTML-File, you can open it easily on any platform.
 
-Perfect for mobile devices, where you can play more discretly in the meeting!
+Perfect for mobile devices, so you can play more discretly in the meeting!
 
 ## How to use
 
