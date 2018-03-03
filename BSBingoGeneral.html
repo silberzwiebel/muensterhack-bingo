@@ -1,0 +1,135 @@
+<meta charset="UTF-8">
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			background-size: cover;
+			font-size: 18px;
+		}
+
+		th,
+		td {
+			padding: 90px;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+		}
+
+		h1 {
+			font-size: 35px;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+	</style>
+
+</head>
+
+
+<body>
+
+	<center>
+
+		<br>
+		<br>
+		<br>
+
+		<h1> Bullshit Bingo</h1>
+
+		<br>
+		<br>
+
+		<table id="bsTable">
+
+			<tr class="header">
+			</tr>
+			<tr>
+				<td onclick=" changeColor(this);">1</td>
+				<td onclick=" changeColor(this);">2</td>
+				<td onclick=" changeColor(this);">3</td>
+
+			</tr>
+			<tr>
+				<td onclick=" changeColor(this);">4</td>
+				<td onclick=" changeColor(this);">5</td>
+				<td onclick=" changeColor(this);">6</td>
+			</tr>
+			<tr>
+				<td onclick=" changeColor(this);">7</td>
+				<td onclick=" changeColor(this);">8</td>
+				<td onclick=" changeColor(this);">9</td>
+			</tr>
+
+		</table>
+
+	</center>
+</body>
+
+</html>
+
+
+
+<script>
+
+	function changeColor(cell) {
+		cell.style.backgroundColor = '#FF0000';
+		cell.style.color = '#FFFFFF';
+	}
+
+
+	//################################################################################################################
+	//###################### REPLACE THE WORDS DOWN BELOW WITH YOUR OWN AND CUSTOMIZE TO YOUR LIKING!! ###############
+	//################################################################################################################
+	
+	var bs = ["Blockchain",
+		, "Innovation"
+		, "Wireless"
+		, "WiFi"
+		, "Cordless"
+		, "No touch"
+		, "Bitcoin"
+		, "Ledger"
+		, "Cold Wallet"
+		, "Mobile First"
+		, "Quantum Computing"
+		, "Microservices"
+		, "Docker"
+		, "Agile"
+		, "Angular"
+		, "Node.js"
+		, "Social Media"
+		, "Big Data"
+		, "Native Apps"
+		, "Responsive Design"
+		, "Web App"
+		, "Container"
+		, "SaaS"
+		, "FaaS"
+		, "Paas"
+		, "Next Gen"
+		, "Deep Data"
+		, "Silos"
+		, "Growth Hacking"
+		, "Paradign Shift"
+		, "SCRUM"
+	];
+
+	var randomNr = Math.floor(Math.random() * bs.length);
+
+	for (let i = 0; i < document.getElementsByTagName('td').length; i++) {
+		var randomNr = Math.floor(Math.random() * bs.length);
+		while (randomNr == 1) {
+			randomNr = Math.floor(Math.random() * bs.length);
+		}
+		document.getElementsByTagName('td')[i].innerHTML = bs[randomNr];
+		console.log(randomNr + " " + bs[randomNr]);
+	}
+
+
+
+
+
+</script>
