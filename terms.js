@@ -39,4 +39,5 @@ var terms = [
   "I18N",
   "Bilderkennung",
   "Geo-Tracking",
+  "Event App",
 ];
