@@ -25,6 +25,7 @@
 			font-family: Arial, Helvetica, sans-serif;
 		}
 	</style>
+	<script src="terms.js"></script>
 
 </head>
 
@@ -37,7 +38,7 @@
 		<br>
 		<br>
 
-		<h1> Bullshit Bingo</h1>
+		<h1> Münsterhack Abschlusspitch Bingo</h1>
 
 		<br>
 		<br>
@@ -79,57 +80,15 @@
 		cell.style.color = '#FFFFFF';
 	}
 
-
-	//################################################################################################################
-	//###################### REPLACE THE WORDS DOWN BELOW WITH YOUR OWN AND CUSTOMIZE TO YOUR LIKING!! ###############
-	//################################################################################################################
-	
-	var bs = ["Blockchain",
-		, "Innovation"
-		, "Wireless"
-		, "WiFi"
-		, "Cordless"
-		, "No touch"
-		, "Bitcoin"
-		, "Ledger"
-		, "Cold Wallet"
-		, "Mobile First"
-		, "Quantum Computing"
-		, "Microservices"
-		, "Docker"
-		, "Agile"
-		, "Angular"
-		, "Node.js"
-		, "Social Media"
-		, "Big Data"
-		, "Native Apps"
-		, "Responsive Design"
-		, "Web App"
-		, "Container"
-		, "SaaS"
-		, "FaaS"
-		, "Paas"
-		, "Next Gen"
-		, "Deep Data"
-		, "Silos"
-		, "Growth Hacking"
-		, "Paradign Shift"
-		, "SCRUM"
-	];
-
-	var randomNr = Math.floor(Math.random() * bs.length);
+	var randomNr = Math.floor(Math.random() * terms.length);
 
 	for (let i = 0; i < document.getElementsByTagName('td').length; i++) {
-		var randomNr = Math.floor(Math.random() * bs.length);
+		var randomNr = Math.floor(Math.random() * terms.length);
 		while (randomNr == 1) {
-			randomNr = Math.floor(Math.random() * bs.length);
+			randomNr = Math.floor(Math.random() * terms.length);
 		}
-		document.getElementsByTagName('td')[i].innerHTML = bs[randomNr];
-		console.log(randomNr + " " + bs[randomNr]);
+		document.getElementsByTagName('td')[i].innerHTML = terms[randomNr];
+		console.log(randomNr + " " + terms[randomNr]);
 	}
-
-
-
-
 
 </script>
