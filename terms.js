@@ -40,4 +40,5 @@ var terms = [
   "Bilderkennung",
   "Geo-Tracking",
   "Event App",
+  "Lasercutter",
 ];
