@@ -41,4 +41,7 @@ var terms = [
   "Geo-Tracking",
   "Event App",
   "Lasercutter",
+  "Ampeldaten",
+  "Blockchain",
+  "Nachhaltig",
 ];
