@@ -44,4 +44,5 @@ var terms = [
   "Ampeldaten",
   "Blockchain",
   "Nachhaltig",
+  "Tinder",
 ];
