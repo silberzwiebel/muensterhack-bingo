@@ -45,4 +45,8 @@ var terms = [
   "Blockchain",
   "Nachhaltig",
   "Tinder",
+  "NFTs",
+  "Fachkräftemangel",
+  "Impact",
+  "Demo schlägt fehl",
 ];
