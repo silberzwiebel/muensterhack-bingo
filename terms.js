@@ -51,4 +51,5 @@ var terms = [
   "Demo schlägt fehl",
   "Schofel",
   "Personas",
+  "Bürgerservice",
 ];
