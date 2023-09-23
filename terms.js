@@ -43,7 +43,6 @@ var terms = [
   "Lasercutter",
   "Ampeldaten",
   "Blockchain",
-  "Nachhaltig",
   "Tinder",
   "NFTs",
   "Fachkräftemangel",
@@ -52,4 +51,6 @@ var terms = [
   "Schofel",
   "Personas",
   "Bürgerservice",
+  "Wortwitz",
+  "Open Source",
 ];
