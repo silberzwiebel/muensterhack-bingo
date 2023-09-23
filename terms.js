@@ -49,4 +49,5 @@ var terms = [
   "Fachkräftemangel",
   "Impact",
   "Demo schlägt fehl",
+  "Schofel",
 ];
