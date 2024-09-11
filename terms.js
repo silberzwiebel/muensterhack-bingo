@@ -64,4 +64,5 @@ var terms = [
   "Datenbank",
   "Data Lake",
   "Big Data",
+  "Cloud",
 ];
