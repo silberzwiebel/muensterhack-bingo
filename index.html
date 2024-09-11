@@ -3,98 +3,114 @@
 <html>
 
 <head>
-	<style>
-		table,
-		th,
-		td {
-			border: 1px solid black;
-			border-collapse: collapse;
-			background-size: cover;
-			font-size: 18px;
-			text-align: center;
-		}
+  <style>
+    h1 {
+      font-size: 35px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-		th,
-		td {
-			padding: 90px;
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: 16px;
-		}
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        ". . ."
+        ". . ."
+        ". . ."
+    }
 
-		h1 {
-			font-size: 35px;
-			font-family: Arial, Helvetica, sans-serif;
-		}
-	</style>
-	<script src="terms.js"></script>
+    .cell {
+      border: 1px solid black;
+      border-collapse: collapse;
+      background-size: cover;
+      font-size: 18px;
+      text-align: center;
+      padding: 90px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+    }
+  </style>
+  <script src="terms.js"></script>
 
 </head>
 
 
 <body>
+  <h1> Münsterhack Abschlusspitch Bingo</h1>
 
-	<center>
+  <div class="grid">
+    <div class="cell" onclick=" changeColor(this);"></div>
+    <div class="cell" onclick=" changeColor(this);"></div>
+    <div class="cell" onclick=" changeColor(this);"></div>
+    <div class="cell" onclick=" changeColor(this);"></div>
+    <div class="cell" onclick=" changeColor(this);"></div>
+    <div class="cell" onclick=" changeColor(this);"></div>
+    <div class="cell" onclick=" changeColor(this);"></div>
+    <div class="cell" onclick=" changeColor(this);"></div>
+    <div class="cell" onclick=" changeColor(this);"></div>
+  </div>
+  <a href="#" onclick="resetTerms()">Neues Bingo</a>
 
-		<br>
-		<br>
-		<br>
+<script>
+  const storageItem = "bingoterms";
+  const storageItemChecked = "bingoterms-checked";
+  let picked = [];
 
-		<h1> Münsterhack Abschlusspitch Bingo</h1>
+  function changeColor(cell) {
+    cell.style.backgroundColor = '#FF0000';
+    cell.style.color = '#FFFFFF';
+  }
 
-		<br>
-		<br>
+  function pickTerm() {
+    let randomNr = Math.floor(Math.random() * terms.length);
+    let term = terms[randomNr];
+    while (picked.indexOf(term) !== -1) {
+      randomNr = Math.floor(Math.random() * terms.length);
+      term = terms[randomNr];
+    }
+    picked.push(term);
+    return term;
+  }
 
-		<table id="bsTable">
+  function populateTerms() {
+    picked = JSON.parse(window.localStorage.getItem(storageItem));
+    if (!picked) {
+      picked = [];
+      for (let i = 0; i < document.querySelectorAll('.cell').length; i++) {
+        document.querySelectorAll('.cell')[i].innerHTML = pickTerm();
+      }
+      window.localStorage.setItem(storageItem, JSON.stringify(picked));
+    }
+    populateCells();
+  }
 
-			<tr class="header">
-			</tr>
-			<tr>
-				<td onclick=" changeColor(this);">1</td>
-				<td onclick=" changeColor(this);">2</td>
-				<td onclick=" changeColor(this);">3</td>
+  function populateCells () {
+    for (let i = 0; i < document.querySelectorAll('.cell').length; i++) {
+      document.querySelectorAll('.cell')[i].innerHTML = picked[i];
+    }
+  }
 
-			</tr>
-			<tr>
-				<td onclick=" changeColor(this);">4</td>
-				<td onclick=" changeColor(this);">5</td>
-				<td onclick=" changeColor(this);">6</td>
-			</tr>
-			<tr>
-				<td onclick=" changeColor(this);">7</td>
-				<td onclick=" changeColor(this);">8</td>
-				<td onclick=" changeColor(this);">9</td>
-			</tr>
+  function resetTerms() {
+    window.localStorage.removeItem(storageItem)
+    for (let i = 0; i < document.querySelectorAll('.cell').length; i++) {
+      document.querySelectorAll('.cell')[i].style.backgroundColor = null;
+      document.querySelectorAll('.cell')[i].style.color = null;
+    }
+    populateTerms();
+  }
 
-		</table>
+  function checkCell(cell) {
+    changeColor(cell);
+    let checked = JSON.parse(window.localStorage.getItem(storageItemChecked));
+    if (!checked) {
 
-	</center>
+    }
+  }
+
+  populateTerms();
+</script>
+
 </body>
 
 </html>
-
-
-
-<script>
-
-	function changeColor(cell) {
-		cell.style.backgroundColor = '#FF0000';
-		cell.style.color = '#FFFFFF';
-	}
-
-	var picked = [];
-
-	var randomNr = Math.floor(Math.random() * terms.length);
-
-	for (let i = 0; i < document.getElementsByTagName('td').length; i++) {
-		var randomNr = Math.floor(Math.random() * terms.length);
-		var term = terms[randomNr];
-		while (picked.indexOf(term) !== -1) {
-			randomNr = Math.floor(Math.random() * terms.length);
-			term = terms[randomNr];
-		}
-		picked.push(term);
-		document.getElementsByTagName('td')[i].innerHTML = term;
-		console.log(randomNr + " " + term);
-	}
-
-</script>
