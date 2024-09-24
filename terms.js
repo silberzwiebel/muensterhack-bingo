@@ -65,4 +65,6 @@ var terms = [
   "Data Lake",
   "Big Data",
   "Cloud",
+  "Demokratie",
+  "Ratsinformationssystem",
 ];
