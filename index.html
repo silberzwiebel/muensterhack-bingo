@@ -40,15 +40,15 @@
   <h1> Münsterhack Abschlusspitch Bingo</h1>
 
   <div class="grid">
-    <div class="cell" onclick=" changeColor(this);"></div>
-    <div class="cell" onclick=" changeColor(this);"></div>
-    <div class="cell" onclick=" changeColor(this);"></div>
-    <div class="cell" onclick=" changeColor(this);"></div>
-    <div class="cell" onclick=" changeColor(this);"></div>
-    <div class="cell" onclick=" changeColor(this);"></div>
-    <div class="cell" onclick=" changeColor(this);"></div>
-    <div class="cell" onclick=" changeColor(this);"></div>
-    <div class="cell" onclick=" changeColor(this);"></div>
+    <div class="cell" onclick=" checkCell(this);"></div>
+    <div class="cell" onclick=" checkCell(this);"></div>
+    <div class="cell" onclick=" checkCell(this);"></div>
+    <div class="cell" onclick=" checkCell(this);"></div>
+    <div class="cell" onclick=" checkCell(this);"></div>
+    <div class="cell" onclick=" checkCell(this);"></div>
+    <div class="cell" onclick=" checkCell(this);"></div>
+    <div class="cell" onclick=" checkCell(this);"></div>
+    <div class="cell" onclick=" checkCell(this);"></div>
   </div>
   <a href="#" onclick="resetTerms()">Neues Bingo</a>
 
@@ -87,12 +87,15 @@
 
   function populateCells () {
     for (let i = 0; i < document.querySelectorAll('.cell').length; i++) {
-      document.querySelectorAll('.cell')[i].innerHTML = picked[i];
+      const el = document.querySelectorAll('.cell')[i]
+      el.innerHTML = picked[i];
+      el.dataset.term = picked[i];
     }
   }
 
   function resetTerms() {
-    window.localStorage.removeItem(storageItem)
+    window.localStorage.removeItem(storageItem);
+    window.localStorage.removeItem(storageItemChecked);
     for (let i = 0; i < document.querySelectorAll('.cell').length; i++) {
       document.querySelectorAll('.cell')[i].style.backgroundColor = null;
       document.querySelectorAll('.cell')[i].style.color = null;
@@ -104,11 +107,26 @@
     changeColor(cell);
     let checked = JSON.parse(window.localStorage.getItem(storageItemChecked));
     if (!checked) {
+      checked = picked.reduce((a,b)=> (a[b]=false,a), {});
+    }
+    checked[cell.innerHTML] = !checked[cell.innerHTML];
+    window.localStorage.setItem(storageItemChecked, JSON.stringify(checked));
+  }
 
+  function restoreChecked() {
+    // const termEls = document.querySelectorAll("[data-term]");
+    let checked = JSON.parse(window.localStorage.getItem(storageItemChecked));
+    if (checked) {
+      for (const [term, termChecked] of Object.entries(checked)) {
+        if (termChecked) {
+          changeColor(document.querySelectorAll(`[data-term='${term}']`)[0])
+        }
+      }
     }
   }
 
   populateTerms();
+  restoreChecked();
 </script>
 
 </body>
